@@ -1,2 +1,85 @@
-# Shell-01
-Advanced Unix shell scripting, environment variables, and command-line data manipulation.
+*This project has been created as part of the 42 curriculum by maaugust.*
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/rfs-hybrid/42-Piscine/main/assets/covers/cover-shell01.png" alt="Shell 01 Cover" width="100%" />
+</div>
+
+<div align="center">
+  <h1>🐚 Shell 01: Advanced Unix Commands & Piping</h1>
+  <img src="https://img.shields.io/badge/Environment-Linux%2FUnix-blue" alt="Environment badge" />
+  <img src="https://img.shields.io/badge/Grade-100%2F100-success" alt="Grade badge" />
+</div>
+
+---
+
+## 💡 Description
+**Shell 01** is the second module of the C Piscine @ 42. While Shell 00 focused on basic terminal survival, this module dives deep into data manipulation, filtering, and shell scripting.
+
+The primary goal of this project is to master the concept of the **Unix Pipeline (`|`)**, allowing the output of one command to be seamlessly passed as the input to another. It covers environment variables, complex file searching, string translation, and mathematical operations across custom numerical bases.
+
+---
+
+## 🧠 Exercise Breakdown & Logic
+
+*The following section explains the core concepts and commands required to solve each exercise. It is designed to help future Pisciners understand the **why** behind the commands, rather than just copying and pasting them.*
+
+### 🔹 File & Data Manipulation
+| Exercise | Concept & Logic |
+| :--- | :--- |
+| **`ex01: print_groups`** | **Environment Variables:** Displaying a comma-separated list of groups for a specific user. <br><br>**Logic:** The `id` command can list user groups. Because the user is defined by the environment variable `$FT_USER`, we pass that to `id`. Then, we use the `tr` (translate) command to replace spaces with commas and strip out the trailing newline. |
+| **`ex02: find_sh`** | **Advanced Searching:** Finding all `.sh` files but outputting *only* their names, without the extension or the path. <br><br>**Logic:** Use the `find` command to locate the files. Then, pipe that output into `basename` (via `exec` or `xargs`) or use `sed` / `awk` to strip away the directory paths and the `.sh` suffix. |
+| **`ex03: count_files`** | **Counting Outputs:** Counting the total number of files and directories in the current path. <br><br>**Logic:** Use `find .` to list everything. Pipe that massive list directly into `wc -l` (word count by lines) to get the total number. |
+| **`ex04: MAC`** | **Data Parsing:** Extracting only the MAC addresses from network configuration data. <br><br>**Logic:** Run `ifconfig` to dump all network interface data. Pipe it into `grep` to isolate the lines containing "ether" (the MAC address indicator), and finally pipe that into `awk` to extract just the specific column containing the address. |
+| **`ex05: Can you create it?`** | **Escape Characters:** Creating a file with a highly unconventional name full of special characters. <br><br>**Logic:** The terminal interprets characters like `*`, `$`, `?`, and `\` as active commands or wildcards. To create a file literally named `"\?$*'MaRViN'*$?"`, you must use strong quotes (`'`) and carefully escape specific characters so the shell reads them purely as text. |
+
+### 🚀 Advanced Processing & Base Math (Optional)
+| Exercise | Concept & Logic |
+| :--- | :--- |
+| **`ex06: Skip`** | **Alternating Lines:** Printing only every second line from an `ls -l` output. <br><br>**Logic:** This requires text processing tools. You can pipe the output of `ls -l` into `sed -n 'p;n'` or `awk 'NR%2==1'` to selectively print rows based on their line numbers. |
+| **`ex07: r_dwssap`** | **The Ultimate Pipeline:** A massive chain of commands to filter, reverse, and format the `/etc/passwd` file based on environment variables. <br><br>**Logic:** This is a test of pipeline endurance. <br>1. `cat /etc/passwd` <br>2. `grep -v` to remove comments <br>3. `awk` to keep every other line <br>4. `cut` to isolate logins <br>5. `rev` to flip the strings <br>6. `sort -r` for reverse alphabetical <br>7. `sed` or `awk` to extract between `$FT_LINE1` and `$FT_LINE2` <br>8. `paste` or `tr` to format with commas and a period. |
+| **`ex08: add_chelou`** | **Base Conversions:** Adding two numbers formatted in entirely different, custom symbol bases. <br><br>**Logic:** <br>1. Use `tr` to translate the custom bases of `$FT_NBR1` and `$FT_NBR2` into standard base-5 and base-13 numbers. <br>2. Convert those into base-10 using `echo` and `bc` (basic calculator). <br>3. Add them together. <br>4. Convert the sum into base-13. <br>5. Use `tr` one last time to translate standard base-13 characters into the requested `gtaio luSnemf` base. |
+
+---
+
+## 🛠️ Instructions
+
+### 📦 Usage & Testing
+Since these are Shell scripts, there is no compilation required. They must be executed using `/bin/sh`.
+
+1. **Clone the repository:**
+   ```bash
+   git clone <your_repository_link>
+   cd 42-Piscine/Shell01
+   ```
+
+2. **Testing with Environment Variables:**
+   Several exercises in this module depend on environment variables. You must set them in your terminal before running the script:
+   ```bash
+   # Example for ex01
+   export FT_USER=bocal
+   bash ex01/print_groups.sh
+
+   # Example for ex07
+   export FT_LINE1=7
+   export FT_LINE2=15
+   bash ex07/r_dwssap.sh
+   ```
+
+---
+
+## 📚 Resources & References
+
+The commands introduced in this module are extremely powerful. Familiarizing yourself with their manual pages is highly recommended.
+
+* `man id` - For user and group identity.
+* `man find` - For advanced file system searching.
+* `man ifconfig` - For viewing network interfaces.
+* `man wc` - For word, line, and byte counting.
+* `man grep` - For pattern matching and text filtering.
+* `man sed` & `man awk` - Essential stream editors for heavy text manipulation.
+* `man tr` - For translating or deleting characters.
+* `man bc` - For arbitrary precision math and base conversions.
+
+### 🤖 AI Usage Guidelines
+* **Code:** No AI-generated code was used to solve these exercises. All shell commands, scripts, and pipelines were manually crafted and tested to ensure a deep, practical understanding of the Unix system.
+* **Documentation:** AI tools were utilized to structure this `README.md` and format the logic breakdowns to create a clean, accessible educational resource for fellow 42 students.
