@@ -6,6 +6,8 @@
 
 <div align="center">
   <h1>🐚 Shell 01: Advanced Unix Commands & Piping</h1>
+  <p><i>Mastering the Unix Pipeline, environment variables, regular expressions, and advanced text processing.</i></p>
+
   <img src="https://img.shields.io/badge/Environment-Linux%2FUnix-blue" alt="Environment badge" />
   <img src="https://img.shields.io/badge/Grade-100%2F100-success" alt="Grade badge" />
 </div>
