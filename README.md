@@ -1,7 +1,7 @@
 *This project has been created as part of the 42 curriculum by maaugust.*
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/rfs-hybrid/42-Piscine/main/assets/covers/cover-shell01.png" alt="Shell 01 Cover" width="100%" />
+  <img src="https://raw.githubusercontent.com/rfs-hybrid/42-piscine-artwork/main/assets/covers/cover-shell01.png" alt="Shell 01 Cover" width="100%" />
 </div>
 
 <div align="center">
