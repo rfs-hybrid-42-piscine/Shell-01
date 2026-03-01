@@ -49,10 +49,20 @@ The primary goal of this project is to master the concept of the **Unix Pipeline
 Since these are Shell scripts, there is no compilation required. They must be executed using `/bin/sh`.
 
 1. **Clone the repository:**
+   You can clone this module directly, or pull the entire 42 Piscine parent repository which includes this module as a submodule.
+
+   **Option A: Clone this module directly**
    ```bash
-   git clone <your_repository_link>
-   cd 42-Piscine/Shell01
+   git clone git@github.com:rfs-hybrid-42-piscine/Shell-01.git Shell-01
+   cd Shell-01
    ```
+
+   **Option B: Clone the parent repository (with submodules)**
+   ```bash
+   git clone --recurse-submodules git@github.com:rfs-hybrid/42-Piscine.git 42-Piscine
+   cd 42-Piscine/Shell-01
+   ```
+   *(Note: The `--recurse-submodules` flag ensures all nested module repositories are populated immediately.)*
 
 2. **Testing with Environment Variables:**
    Several exercises in this module depend on environment variables. You must carefully export them in your terminal before running the script. Note that exercises like `add_chelou` require heavy escaping of special characters.
